@@ -1,14 +1,29 @@
 ---
+const pageTitle = "About us";
+
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
 
 ---
 
 <html lang="en">
- <head>
+  <head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Rin's Blog - About</title>
+		<title>Rin's Blog - { pageTitle }</title>
 	</head>
   <body>
     <nav class="nav">
@@ -16,9 +31,42 @@
       <a href="/about/">About</a>
       <a href="/blog/">Blog</a>
     </nav>
-    <h1>This is About Page</h1>
+    <h1>This is { pageTitle } Page</h1>
     <h2>... and my new Astro site!</h2>
     <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
     <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+
+    <p>Here are a few facts about me:</p>
+
+    <ul>
+      <li>Name is { identity.firstName }</li>
+      <li>Live in { identity.country }</li>
+
+      <!-- if condidional and nested for loop hobbies -->
+      { identity.hobbies.length > 2 &&
+        <li>Nested for list Two of my hobbies are: { identity.hobbies[0] } and { identity.hobbies[1] }</li>
+      }
+      
+    </ul>
+
+    <!-- show -->
+    { happy && <p>I am happy to be learning Astro!</p> }
+
+    <!-- not show -->
+    { finished && <p>I finished this tutorial!</p> }
+
+    <!-- 3元 function -->
+    { goal === 3 ? <p>True Value</p> : <p>False Value</p> }
+
+
+    <ul class="list">
+      <!-- Dynamic HTML --> 
+      <!-- For Each not work -->
+      { skills.map(item => <li>{ item }</li>) }
+    </ul>
+    
+
+
   </body>
+  
 </html>
